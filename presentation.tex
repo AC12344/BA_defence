@@ -26,6 +26,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{listings}
 \usepackage{todonotes}
+\usepackage{color}
+% \usepackage{listings}
+% \usepackage[ruled,vlined]{algorithm2e}
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 \usepackage{helvet}
@@ -182,8 +185,8 @@ Overview of the problem
 Overview:
 \begin{itemize}
 \item Classic Reinforcement Learning \& Terminology
-\item The approach
-\item Issues and shortcomings
+\item The Approach
+\item Issues and Shortcomings
 \end{itemize}
 \end{frame}
 
@@ -193,20 +196,68 @@ Terminology
 \begin{itemize}
 \item Agent
 \item Environment
-\item States, statespace, actions \& actionspace
-\item Reward and reward function
+\item States, Statespace, Actions \& Actionspace
+\item Reward and Reward function
 \item Policy
 \end{itemize}
 
 Classic Reinforcement Learning (CRL)
 \begin{itemize}
   \item Markov Decision Process (MDP)
-  \item Problem review
-  \item Why CCRL does not fit on this problem
+  \item Problem Review
+  \item Why CCRL does not fit on this problem \todo{Maybe colour with blue as well, maybe not}
 \end{itemize}
-\todo{Maybe colour with blue as well, maybe not}
 \end{frame}
 
+\begin{frame}{Reinforcement Learning}{The approach\vphantom{(y}}
+\vspace{-0.7em}
+Concepts:
+\begin{itemize}
+\item Policy Gradient Methods
+\item Neural Networks
+\item Optimizer
+\end{itemize}
+Implementation specifics:
+\begin{itemize}
+  \item Finite differences
+  \item Reward \& Reward Function
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Reinforcement Learning}{The approach - Implementation specifics\vphantom{(y}}
+\vspace{-0.7em}
+Implementation specifics:
+\begin{itemize}
+  \item {\color{blue}Finite differences}
+  \item Reward \& Reward Function
+\end{itemize}
+
+% \begin{algorithm}[H]
+% \SetAlgoLined
+% \KwResult{returns the reward and updates the gradient vector}
+%  input: policy weights $\theta_h$ \& gradient vector $g_y$\;
+%  \for{for n=0 to 500 do}{\;
+%   generate policy variation $\epsilon \theta_n$\;
+%   estimate $\dot{J_{+\epsilon}}_n \approx J(\theta_h + \frac{1}{2}\epsilon \theta_n)$ from roll-out \;
+%   estimate  $\dot{J_{-\epsilon}}_n \approx J(\theta_h - \frac{1}{2}\epsilon \theta_n)$ from roll-out\;
+%   compute $\Delta \dot{J_i} \approx J(\theta_h + \frac{1}{2}\epsilon  \theta_n)  - J(\theta_h - \frac{1}{2}\epsilon  \theta_n)$\;
+%   compute $r += \frac{1}{2} (\cdot J_{+\epsilon}}_n + J_{-\epsilon}}_n) $\;
+%  }
+%  compute gradient estimate vector $g_y = (\epsilon \Theta ^T\epsilon \Theta)^{-1}\epsilon \Theta ^T \Delta \dot{J}$\;
+%  return reward $R_{PD} = \frac{r}{500}$\;
+%  \caption{Policy Gradient Estimation using finite differences altered to fit the actual implementation}
+%  \label{al::alg2}
+% \end{algorithm}
+\end{frame}
+
+\begin{frame}{Reinforcement Learning}{The approach - Implementation specifics\vphantom{(y}}
+\vspace{-0.7em}
+Implementation specifics:
+\begin{itemize}
+  \item Finite differences
+  \item {\color{blue}Reward \& Reward Function}
+\end{itemize}
+\end{frame}
 
 \begin{frame}{Introduction}{Curriculum for Reguleringsteknik (REG)\vphantom{(y}}
 \vspace{-0.7em}
