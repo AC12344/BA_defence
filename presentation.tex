@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,10pt,t]{beamer}
+\documentclass{beamer}
 % \usetheme[
 % %%% options passed to the outer theme
 % %    progressstyle=fixedCircCnt,   %either fixedCircCnt, movCircCnt, or corner
@@ -32,6 +32,9 @@
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 \usepackage{helvet}
+\usepackage{xmpmulti}
+\usepackage{animate}
+%\usepackage{movie15}
 \usefonttheme{professionalfonts}
 
 \newtheorem{algorithm}{Algorithm}
@@ -107,64 +110,22 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Introductory}{Overview\vphantom{(y}}
-\vspace{-0.7em}
-Overview of the problem
-\begin{itemize}
-\item Vessel stabilizer
-\item Why is a vessel stabilizer needed?
-\item What is Dacoma's current solution?
-\item The objective
-\item The approach
-\end{itemize}
+\begin{frame}{Introduction}{The Vessel and the problem\vphantom{(y}}
+  The issue is keeping the vessel stable enough to attach to the windmill during a storm.
+\begin{columns}
+    \begin{column}{0.48\textwidth}
+      \includegraphics[width=1\textwidth]{images/docking_boat}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        \includegraphics[width=1\textwidth]{images/boat2_storm}
+    \end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}{Introductory}{Vessel stabilizer\vphantom{(y}}
-\vspace{-0.7em}
-Overview of the problem
-\begin{itemize}
-\item {\color{blue}Vessel stabilizer}
-\item Why is a vessel stabilizer needed?
-\item What is Dacoma's current solution?
-\item The objective
-\item The approach
-\end{itemize}
-\end{frame}
 
-\begin{frame}{Introductory}{Vessel stabilizer\vphantom{(y}}
+\begin{frame}{Introduction}{The problem and the solution\vphantom{(y}}
 \vspace{-0.7em}
-Overview of the problem
-\begin{itemize}
-\item Vessel stabilizer
-\item {\color{blue}Why is a vessel stabilizer needed?}
-\item What is Dacoma's current solution?
-\item The objective
-\item The approach
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Introductory}{Current solution\vphantom{(y}}
-\vspace{-0.7em}
-Overview of the problem
-\begin{itemize}
-\item Vessel stabilizer
-\item Why is a vessel stabilizer needed?
-\item {\color{blue}What is Dacoma's current solution?}
-\item The objective
-\item The approach
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Introductory}{Objective\vphantom{(y}}
-\vspace{-0.7em}
-Overview of the problem
-\begin{itemize}
-\item Vessel stabilizer
-\item Why is a vessel stabilizer needed?
-\item What is Dacoma's current solution?
-\item {\color{blue}The objective}
-\item The approach
-\end{itemize}
+%\animategraphics[loop,controls,width=\linewidth]{300}{gifs/dacoma_frame_}{0001}{0300}
 \end{frame}
 
 \begin{frame}{Introductory}{Approach\vphantom{(y}}
@@ -192,36 +153,77 @@ Overview:
 
 \begin{frame}{Reinforcement Learning}{Classic Reinforcement Learning \& Terminology\vphantom{(y}}
 \vspace{-0.7em}
-Terminology
-\begin{itemize}
-\item Agent
-\item Environment
-\item States, Statespace, Actions \& Actionspace
-\item Reward and Reward function
-\item Policy
-\end{itemize}
 
-Classic Reinforcement Learning (CRL)
-\begin{itemize}
-  \item Markov Decision Process (MDP)
-  \item Problem Review
-  \item Why CCRL does not fit on this problem \todo{Maybe colour with blue as well, maybe not}
-\end{itemize}
+\begin{columns}
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+      \item Agent
+      \item Environment
+      \item States, Statespace, Actions \& Actionspace
+      \item Reward and Reward function
+      \item Policy
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        \includegraphics[width=1\textwidth]{images/rl_explained.jpg}
+    \end{column}
+\end{columns}
+% Classic Reinforcement Learning (CRL)
+% \begin{itemize}
+%   \item Markov Decision Process (MDP)
+%   \item Problem Review
+%   \item Why CCRL does not fit on this problem
+% \end{itemize}
 \end{frame}
 
-\begin{frame}{Reinforcement Learning}{The approach\vphantom{(y}}
+\begin{frame}{Reinforcement Learning}{Classic Reinforcement Learning \& Terminology\vphantom{(y}}
 \vspace{-0.7em}
-Concepts:
-\begin{itemize}
-\item Policy Gradient Methods
-\item Neural Networks
-\item Optimizer
-\end{itemize}
-Implementation specifics:
-\begin{itemize}
-  \item Finite differences
-  \item Reward \& Reward Function
-\end{itemize}
+\begin{centering}
+  Why does classic Reinforcement learning not work for this problem?
+\end{centering}
+
+\end{frame}
+
+\begin{frame}{Reinforcement Learning}{The Neural Networks\vphantom{(y}}
+\vspace{-0.7em}
+
+\begin{columns}
+    \begin{column}{0.48\textwidth}
+     \includegraphics[width=1\textwidth]{images/gradient_descent.png}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        \includegraphics[width=1\textwidth]{images/NN_illu.png}
+    \end{column}
+\end{columns}
+% Concepts:
+% \begin{itemize}
+% \item Policy Gradient Methods
+% \item Neural Networks
+% \item Optimizer
+% \end{itemize}
+% Implementation specifics:
+% \begin{itemize}
+%   \item Finite differences
+%   \item Reward \& Reward Function
+% \end{itemize}
+\end{frame}
+
+\begin{frame}{Reinforcement Learning}{The Optimizer \vphantom{(y}}
+\vspace{-0.7em}
+\begin{columns}
+    \begin{column}{0.48\textwidth}
+        \includegraphics[width=1\textwidth]{images/adam_unbiased.JPG}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        \includegraphics[width=1\textwidth]{images/adam_bias.JPG}
+    \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Reinforcement Learning}{The Optimizer \vphantom{(y}}
+\vspace{-0.7em}
+\includegraphics[width=1\textwidth]{images/adam_update.JPG}
+
 \end{frame}
 
 \begin{frame}{Reinforcement Learning}{The approach - Implementation specifics\vphantom{(y}}
@@ -259,28 +261,219 @@ Implementation specifics:
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Introduction}{Curriculum for Reguleringsteknik (REG)\vphantom{(y}}
+
+\begin{frame}{Simplified Model}{Intro\vphantom{(y}}
 \vspace{-0.7em}
-{\footnotesize Matematiske og grafiske metoder til syntese af {\color{red}lineære tidsinvariante systemer}:\footnote{{\tiny Based on https://fagbesk.sam.sdu.dk/?fag\_id=39673}}
+Using Archimedes principle and a adjustable air keel works to our advantages, the boat can stabilize itself.
+\includegraphics{images/boat_keel.JPG}
+\end{frame}
+
+\begin{frame}{Simplified Model}{Bouyancy \vphantom{(y}}
+\vspace{-0.7em}
+\begin{figure}
+  \includegraphics[scale=0.7]{images/boat_b.JPG}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Simplified Model}{Boat modelling \vphantom{(y}}
+\vspace{-0.7em}
 \begin{itemize}
-\item {\color{red}diskret og kontinuert tilstandsbeskrivelse}
-\item analyse i tid og frekvens
-\item stabilitet, reguleringshastighed, følsomhed og fejl
-\item digitale PI, PID, LEAD og LAG regulatorer (serieregulatorer)
-\item tilstandsregulering, pole-placement og tilstands-estimering (observer)
-\item optimal regulering (least squares) og optimal tilstands-estimation (Kalman-filter)
+  \item {\color{blue}Boat modelling}
 \end{itemize}
-\vspace{0.5em}
-\textbf{Færdigheder}:\\
-Efter gennemførelse af kurset kan den succesfulde studerende:
-\begin{itemize}
-\item kunne analysere, dimensionere og implementere såvel kontinuert som tidsdiskret regulering af lineære tidsinvariante og stokastiske systemer
-\end{itemize}
-\vspace{0.5em}
-\textbf{Kompetencer}:\\
-Efter gennemførelse af kurset kan den succesfulde studerende:
-\begin{itemize}
-\item anvende og implementere klassiske og moderne reguleringsteknikker for at kunne styre og regulere en robot hurtig og præcist
+\begin{figure}
+  \includegraphics[scale=0.7]{images/link_model.JPG}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Simplified Model}{The model \vphantom{(y}}
+\vspace{-0.7em}
+$$
+  M(q)\dot{\dot{q}} + C(q,\dot{q})\dot{q} + G(g) k_{\epsilon}q + B_F \dot{q}  = \Gamma
+$$
+\footnotesize{
+where M(q) is the inertia matrix, C(q,$\dot{q}$) are the Coriolis terms, G(q) is the gravity vector, $k_{eqsilon}$ is a matrix with the elastic constants, $B_F$ is the friction terms and $\Gamma$ is the vector of generalized external forces applied, i.e $\Gamma ^\tau = [0,0,0,z]$.}
+\end{frame}
+
+\begin{frame}{Simplified Model}{Limitations \vphantom{(y}}
+\vspace{-0.7em}
+
+\footnotesize{\begin{itemize}
+  \item An approximation
 \end{itemize}}
 \end{frame}
+
+\begin{frame}{Results \& Discussion }{Introduction\vphantom{(y}}
+\vspace{-0.7em}
+\begin{itemize}
+  \item Training and testing settings and limitations
+  \item Tuning hyperparameters
+  \item Test and results
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Training \vphantom{(y}}
+\vspace{-0.7em}
+\begin{itemize}
+  \item {\color{blue}Training and testing settings and limitations}
+  \item Tuning hyperparameters
+  \item Test and results
+\end{itemize}
+\footnotesize{\begin{itemize}
+  \item 500 rollouts, 200 iterations and two simulations
+  \item Random generated bias values
+  \item Angle limitations for the keel and boat
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tuning \vphantom{(y}}
+\vspace{-0.7em}
+\begin{itemize}
+  \item Training and testing settings and limitations
+  \item {\color{blue}Tuning hyperparameters}
+  \item Test and results
+\end{itemize}
+\footnotesize{\begin{itemize}
+  \item NN architecture
+  \item Learning rate
+\end{itemize}}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l | l | l | 1}
+ & HL = 1 \& NoN = 8 (HL1) & HL = 2 \& NoN = 8,4 (HL2) & HL = 2 \& NoN = 8,8 (HL3) \\
+\hline
+LR & 0.1 & 0.01 & 0.001 \\
+LR & 0.2 & 0.02 & 0.002 \\
+LR & 0.5 & 0.05 & 0.005
+\end{tabular}
+\caption{Displays the different learning rates tested with the three different architectural choices.}
+\end{table}\\
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tuning - NN architecture\vphantom{(y}}
+\vspace{-0.7em}
+\begin{figure}
+  \includegraphics[scale=0.7]{images/lr_low_a.JPG}
+  \caption{Learning rate: 0.001}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tuning - NN architecture\vphantom{(y}}
+\vspace{-0.7em}
+\begin{figure}
+  \includegraphics[scale=0.7]{images/lr_med_a.JPG}
+  \caption{Learning rate: 0.01}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tuning - NN architecture\vphantom{(y}}
+\vspace{-0.7em}
+\begin{figure}
+  \includegraphics[scale=0.7]{images/lr_high_a.JPG}
+  \caption{Learning rate: 0.1}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tuning - Learning rates\vphantom{(y}}
+\vspace{-0.7em}
+\begin{figure}
+  \includegraphics[scale=0.5]{images/lr_cropped_0_10.JPG}
+  \caption{All learning rates cropped from 0 to 10 iterations}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tuning - Learning rates\vphantom{(y}}
+\vspace{-0.7em}
+\begin{figure}
+  \includegraphics[scale=0.5]{images/lr_cropped_end.JPG}
+  \caption{All learning rates cropped from 1000 to 2000 iterations}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tuning - Learning rates\vphantom{(y}}
+\vspace{-0.7em}
+\begin{figure}
+  \includegraphics[scale=0.5]{images/weights.JPG}
+  \caption{Shows the weights from chosen learning rates}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tests and results \vphantom{(y}}
+\vspace{-0.7em}
+\begin{itemize}
+  \item Training and testing settings and limitations
+  \item Tuning hyperparameters
+  \item {\color{blue}Test and results}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tests and results \vphantom{(y}}
+\vspace{-0.7em}
+\begin{table}
+\centering
+\begin{tabular}{ l | l}
+$\phi$ & $\theta$ \\
+\hline
+ $0^{\circ}$ & $\pm 20^{\circ}$ \\
+ $0^{\circ}$ & $\pm 15^{\circ}$ \\
+ $0^{\circ}$ & $\pm 10^{\circ}$ \\
+ $\pm 5^{\circ}$ & $\pm 20^{\circ}$ \\
+ $\pm 5^{\circ}$ & $\pm 15^{\circ}$ \\
+ $\pm 5^{\circ}$ & $\pm 10^{\circ}$ \\
+ $\pm 10^{\circ}$ & $\pm 20^{\circ}$ \\
+ $\pm 10^{\circ}$ & $\pm 15^{\circ}$ \\
+ $\pm 10^{\circ}$ & $\pm 10^{\circ}$ \\
+ $\pm 15^{\circ}$ & $\pm 20^{\circ}$ \\
+ $\pm 15^{\circ}$ & $\pm 15^{\circ}$ \\
+ $\pm 15^{\circ}$ & $\pm 10^{\circ}$ \\
+ $\pm 20^{\circ}$ & $\pm 20^{\circ}$ \\
+ $\pm 20^{\circ}$ & $\pm 15^{\circ}$ \\
+ $\pm 20^{\circ}$ & $\pm 10^{\circ}$
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Results \& Discussion }{Tests and results \vphantom{(y}}
+\vspace{-0.7em}
+\begin{table}
+\centering
+\begin{tabular}{l | l | l | 1 | 1}
+Test \# & $\phi$ & $\theta$ & CC without torque limit & CC with torque limit \\
+\hline
+1 & 0$^{\circ}$ & -20$^{\circ}$ & 0.1345 & 0.9  \\
+2 & 0$^{\circ}$ & -15$^{\circ}$ & 0.1341 & 0.73 \\
+3 & 0$^{\circ}$ & -10$^{\circ}$ & 0.1320 &  0.48\\
+4 & 5$^{\circ}$ & -20$^{\circ}$ & 0.1423 & 0.9 \\
+5 & 5$^{\circ}$ & -15$^{\circ}$ & 0.1395 & 0.74 \\
+6 & 5$^{\circ}$ & -10$^{\circ}$ & 0.1350 & 0.48 \\
+7 & 10$^{\circ}$ & -20$^{\circ}$ & 0.1384 & 0.9 \\
+8 & 10$^{\circ}$ & -15$^{\circ}$ & 0.1365 & 0.73 \\
+9 & 10$^{\circ}$ & -10$^{\circ}$ & 0.1324 & 0.48 \\
+10 & 15$^{\circ}$ & -20$^{\circ}$ & 0.1348 &  0.74 \\
+11 & 15$^{\circ}$ & -15$^{\circ}$ & 0.1384 & 0.73 \\
+12 & 15$^{\circ}$ & -10$^{\circ}$ & 0.1354 & 0.73 \\
+13 & 20$^{\circ}$ & -20$^{\circ}$ & 0.½320 & 0.91 \\
+14 & 20$^{\circ}$ & -15$^{\circ}$ & 0.1315 & 0.91 \\
+15 & 20$^{\circ}$ & -10$^{\circ}$ & 0.1321 & 0.9
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Conclusion \& Future Works }{Conclusion \vphantom{(y}}
+\vspace{-0.7em}
+Conclusion
+
+\end{frame}
+
+\begin{frame}{Conclusion \& Future Works }{Future works \vphantom{(y}}
+\vspace{-0.7em}
+\begin{itemize}
+  \item Torque limitations
+  \item A model that includes the proper effect of Dacoma's air keel
+  \item Adding waves to the model/training the model out in the sea
+\end{itemize}
+\end{frame}
+
 \end{document}
