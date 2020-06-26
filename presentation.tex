@@ -141,15 +141,6 @@ Overview of the problem
 \end{frame}
 
 
-\begin{frame}{Reinforcement Learning}{Overview\vphantom{(y}}
-\vspace{-0.7em}
-Overview:
-\begin{itemize}
-\item Classic Reinforcement Learning \& Terminology
-\item The Approach
-\item Issues and Shortcomings
-\end{itemize}
-\end{frame}
 
 \begin{frame}{Reinforcement Learning}{Classic Reinforcement Learning \& Terminology\vphantom{(y}}
 \vspace{-0.7em}
@@ -184,28 +175,17 @@ Overview:
 
 \end{frame}
 
+\begin{frame}{Reinforcement Learning}{The Policy gradient methods\vphantom{(y}}
+\vspace{-0.7em}
+\includegraphics[width=1\textwidth]{images/gradient_descent.png}
+
+What makes Policy gradient well-suited for this task? \\
+\end{frame}
+
 \begin{frame}{Reinforcement Learning}{The Neural Networks\vphantom{(y}}
 \vspace{-0.7em}
-
-\begin{columns}
-    \begin{column}{0.48\textwidth}
-     \includegraphics[width=1\textwidth]{images/gradient_descent.png}
-    \end{column}
-    \begin{column}{0.48\textwidth}
         \includegraphics[width=1\textwidth]{images/NN_illu.png}
-    \end{column}
-\end{columns}
-% Concepts:
-% \begin{itemize}
-% \item Policy Gradient Methods
-% \item Neural Networks
-% \item Optimizer
-% \end{itemize}
-% Implementation specifics:
-% \begin{itemize}
-%   \item Finite differences
-%   \item Reward \& Reward Function
-% \end{itemize}
+
 \end{frame}
 
 \begin{frame}{Reinforcement Learning}{The Optimizer \vphantom{(y}}
@@ -226,14 +206,12 @@ Overview:
 
 \end{frame}
 
-\begin{frame}{Reinforcement Learning}{The approach - Implementation specifics\vphantom{(y}}
+\begin{frame}{Reinforcement Learning}{The approach - finite differences method\vphantom{(y}}
 \vspace{-0.7em}
-Implementation specifics:
-\begin{itemize}
-  \item {\color{blue}Finite differences}
-  \item Reward \& Reward Function
-\end{itemize}
+Central difference ?
+$$\Delta _{h}[f](x)=f\left(x+{\tfrac {1}{2}}h\right)-f\left(x-{\tfrac {1}{2}}h\right)$$
 
+%
 % \begin{algorithm}[H]
 % \SetAlgoLined
 % \KwResult{returns the reward and updates the gradient vector}
@@ -254,9 +232,7 @@ Implementation specifics:
 
 \begin{frame}{Reinforcement Learning}{The approach - Implementation specifics\vphantom{(y}}
 \vspace{-0.7em}
-Implementation specifics:
 \begin{itemize}
-  \item Finite differences
   \item {\color{blue}Reward \& Reward Function}
 \end{itemize}
 \end{frame}
@@ -293,46 +269,30 @@ $$
 $$
 \footnotesize{
 where M(q) is the inertia matrix, C(q,$\dot{q}$) are the Coriolis terms, G(q) is the gravity vector, $k_{eqsilon}$ is a matrix with the elastic constants, $B_F$ is the friction terms and $\Gamma$ is the vector of generalized external forces applied, i.e $\Gamma ^\tau = [0,0,0,z]$.}
-\end{frame}
 
-\begin{frame}{Simplified Model}{Limitations \vphantom{(y}}
-\vspace{-0.7em}
-
-\footnotesize{\begin{itemize}
-  \item An approximation
-\end{itemize}}
-\end{frame}
-
-\begin{frame}{Results \& Discussion }{Introduction\vphantom{(y}}
-\vspace{-0.7em}
-\begin{itemize}
-  \item Training and testing settings and limitations
-  \item Tuning hyperparameters
-  \item Test and results
-\end{itemize}
+Limitations?
 \end{frame}
 
 \begin{frame}{Results \& Discussion }{Training \vphantom{(y}}
 \vspace{-0.7em}
-\begin{itemize}
-  \item {\color{blue}Training and testing settings and limitations}
-  \item Tuning hyperparameters
-  \item Test and results
-\end{itemize}
+{\color{blue}Training and testing settings and limitations}
+
 \footnotesize{\begin{itemize}
   \item 500 rollouts, 200 iterations and two simulations
   \item Random generated bias values
-  \item Angle limitations for the keel and boat
+  \item Angle limitations for the keel ($\pm 40$) and boat ($\pm 30 $)
+  \item Angles randomly generated to be between $\pm 25$.
+  \item Activation function = Leaky ReLU
+  \item Central finite difference, $\epsilon = 0.1262$
+  \item Adam as optimizer
+  \item Stopping criteria is $\pm 1 \degree$
 \end{itemize}}
 \end{frame}
 
 \begin{frame}{Results \& Discussion }{Tuning \vphantom{(y}}
 \vspace{-0.7em}
-\begin{itemize}
-  \item Training and testing settings and limitations
-  \item {\color{blue}Tuning hyperparameters}
-  \item Test and results
-\end{itemize}
+{\color{blue}Tuning hyperparameters}
+
 \footnotesize{\begin{itemize}
   \item NN architecture
   \item Learning rate
@@ -399,15 +359,6 @@ LR & 0.5 & 0.05 & 0.005
 \end{figure}
 \end{frame}
 
-\begin{frame}{Results \& Discussion }{Tests and results \vphantom{(y}}
-\vspace{-0.7em}
-\begin{itemize}
-  \item Training and testing settings and limitations
-  \item Tuning hyperparameters
-  \item {\color{blue}Test and results}
-\end{itemize}
-
-\end{frame}
 
 \begin{frame}{Results \& Discussion }{Tests and results \vphantom{(y}}
 \vspace{-0.7em}
@@ -436,7 +387,7 @@ $\phi$ & $\theta$ \\
 \end{frame}
 
 \begin{frame}{Results \& Discussion }{Tests and results \vphantom{(y}}
-\vspace{-0.7em}
+\vspace{-1.4em}
 \begin{table}
 \centering
 \begin{tabular}{l | l | l | 1 | 1}
@@ -463,8 +414,14 @@ Test \# & $\phi$ & $\theta$ & CC without torque limit & CC with torque limit \\
 
 \begin{frame}{Conclusion \& Future Works }{Conclusion \vphantom{(y}}
 \vspace{-0.7em}
-Conclusion
 
+\begin{itemize}
+  \item Use reinforcement to apply a torque to the air keel in order to keep the vessel stable.
+  \item Derived a simplified model for simulation use.
+  \item Trained and agent and found the best policy using the simplified modeled
+  \item Added a mock limitation on the amount of torque which the agent could apply.
+  \item Works well, maybe even a bit too well?
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Conclusion \& Future Works }{Future works \vphantom{(y}}
